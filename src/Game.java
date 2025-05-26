@@ -11,5 +11,19 @@ public class Game{
         this.quality = quality;
     }
 
+    int getPrice(){
+        return price;
+    }
+    String getCategory(){
+        return category;
+    }
+
+    int getQuality(){
+        return quality;
+    }
+    String getName(){
+        return name;
+    }
+
 }
 
