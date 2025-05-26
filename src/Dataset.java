@@ -15,20 +15,21 @@ public class Dataset{
         ArrayList<Game> aux = new ArrayList<>();
 
         if("price".equals(sortedByAttribute)) { //.equals compara la igualdad de 2 objetos, ya que "==" compara direcciones de memoria
+
             int pos = PriceBinarySort(0, Data.size()-1, price);
             if(pos != -1){
                 int i = pos;
-                while( i>=0 && Data.get(i).getPrice() == price){
+                while(i>=0 && Data.get(i).getPrice() == price){
                     aux.add(Data.get(i));
                     i--;
                 }
+
                 i = pos +1;
-                while( i<Data.size() && Data.get(i).getPrice() == price){
+                while(i<Data.size() && Data.get(i).getPrice() == price){
                     aux.add(Data.get(i));
                     i++;
                 }
-            }
-            else{
+            } else{
                 for(Game game : Data){
                     if(game.getPrice() == price){
                         aux.add(game);
@@ -106,7 +107,7 @@ public class Dataset{
 
         if("category".equals(sortedByAttribute)){
             int pos = categoryBinarySearch(category, 0, Data.size()-1);
-            if(pos != -1){
+            if(pos == -1){
                 return aux;
             }
 
@@ -149,13 +150,19 @@ public class Dataset{
 
     public ArrayList<Game> getGamesByQuality(int quality){
         ArrayList<Game> aux = new ArrayList<>();
+
         if("quality".equals(sortedByAttribute)){
             int pos = qualityBinarySearch(quality, 0, Data.size()-1);
-            if(pos != -1){
+            if(pos == -1){
                 return aux;
             }
+
             int i = pos;
             while(i >= 0 && Data.get(i).getQuality() == quality){
+                i--;
+            }
+            i++;
+            while(i < Data.size() && Data.get(i).getQuality() == quality){
                 aux.add(Data.get(i));
                 i++;
             }
@@ -323,6 +330,4 @@ public class Dataset{
 
         return i + 1;
     }
-
-
 }

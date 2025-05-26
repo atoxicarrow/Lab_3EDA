@@ -20,6 +20,8 @@ public class Main {
         System.out.println("Ingrese el atributo que desea buscar (price, category, quality): ");
         String atributo = sc.nextLine();
 
+        dataset.sortByAlgorith(algoritmo, atributo);
+
         System.out.print("Ingrese el precio exacto para buscar juegos: ");
         int precio = sc.nextInt();
 
